@@ -1,0 +1,294 @@
+<<<!DOC<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        @font-face {
+            font-family: 'EASTARJET-Medium';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/EASTARJET-Medium.woff2') format('woff2');
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'YClover';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/YClover-Regular.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body { 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'EASTARJET-Medium', sans-serif; 
+            background: #FDF5F6; 
+            background-size: cover;
+            letter-spacing: -0.01em; 
+            color: #333333;
+            padding-top: 60px; /* 메뉴바 높이만큼 여백 추가 */
+        }
+
+        /* --- 상단 네비게이션 바 스타일 시작 --- */
+        nav {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 2px solid #ffb6c1;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(255, 182, 193, 0.2);
+        }
+
+        .nav-contents {
+            width: 700px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .logo {
+            font-family: 'YClover', sans-serif;
+            font-size: 22px;
+            font-weight: bold;
+            color: #ff3386;
+            text-decoration: none;
+        }
+
+        .menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu-item a {
+            display: block; 
+            padding: 0 20px;
+            line-height: 60px;
+            text-decoration: none;
+            font-family: 'YClover', sans-serif;
+            font-size: 16px;
+            color: #8A1538;
+            transition: all 0.3s ease;
+        }
+
+        .menu-item a:hover {
+            color: #ff1493;
+            background-color: rgba(255, 240, 245, 0.8);
+        }
+        /* --- 상단 네비게이션 바 스타일 끝 --- */
+
+        .note {
+            width: 700px;
+            background: white;
+            padding: 60px 80px;
+            position: relative;
+            margin: 60px auto; 
+            border-radius: 0px;
+            box-sizing: border-box;
+        }
+
+        .section-1 .note { transform: rotate(-1deg); margin-left: auto; margin-right: 15%; }
+        .section-2 .note { transform: rotate(1deg); margin-left: 10%; }
+        .section-3 .note { transform: rotate(-0.5deg); margin-left: auto; margin-right: 20%; }
+        .section-4 .note { transform: rotate(0.8deg); margin-left: auto; margin-right: 15%; width: 750px;}
+
+        section {
+            padding: 1px 0;
+            position: relative;
+        }
+
+        .note::before {
+            content: "";
+            position: absolute;
+            width: 80px; /* 스티커 크기 */
+            height: 80px;
+            background-image: url('sticker.png'); 
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: 10; /* 글씨보다 위로 올라오게 */
+        }
+
+        .section-1 .note::before { top: -30px; left: 45%; transform: rotate(-15deg); } /* 정중앙 위 */
+        .section-2 .note::before { top: -20px; left: -20px; transform: rotate(20deg); } /* 왼쪽 위 모서리 */
+        .section-3 .note::before { top: -25px; right: 20px; left: auto; transform: rotate(-5deg); } /* 오른쪽 위 */
+        .section-4 .note::before { top: -35px; left: 50%; transform: translateX(-50%) rotate(10deg); } /* 정중앙 살짝 삐뚤게 */
+        
+        .section-1 { background: #fee4f0; } 
+        
+        .section-2 { 
+            background: url('https://item.kakaocdn.net/do/0ede8141baf606231da8861099788160f43ad912ad8dd55b04db6a64cddaf76d'); 
+            background-size: 180px;
+            opacity: 0.9;
+        }
+        
+        .section-3 { background: #fee4f0; } 
+
+        .section-4 { background: url('heart.jpg') center/cover fixed; padding: 100px 0;}
+
+        h2, .title-text, .sub-text, .highlight, b, strong, .ideal-list-title, .note-caption {
+            font-family: 'YClover', sans-serif; 
+        }
+
+        .title-text { font-size: 50px; font-weight: bold; color: #ff3386; margin-bottom: 10px; }
+        .sub-text { font-size: 25px; color: #A00040; margin-bottom: 30px; }
+        .highlight { color: #FF1493; font-weight: bold; }
+        
+        h2 { 
+            border-bottom: 3px solid #ffb6c1; 
+            display: inline-block; 
+            padding-bottom: 5px; 
+            margin-top: 0; 
+            margin-bottom: 25px;
+            color: #8A1538;
+        }
+
+        p { 
+            line-height: 2.2; 
+            word-break: keep-all; 
+            text-align: left; 
+            font-size: 17px; 
+            margin-bottom: 25px;
+            color: #4A4A4A;
+        }
+
+        img { 
+            display: block;
+            margin: 20px auto; 
+            max-width: 250px; 
+            height: auto;
+            border-radius: 5px;
+            border: 8px solid white; 
+        }
+        
+        .ideal-list-title {
+            color: #8A1538;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        svg.hidden { width: 0; height: 0; position: absolute; }
+        
+        .header-section {
+            padding: 120px 0;
+            background: url('k.jpeg') center/cover fixed;
+            position: relative;
+        }
+
+        .heart-box {
+            width: 650px;
+            height: 550px;
+            margin: auto;
+            clip-path: url(#heart-clip);
+            backdrop-filter: blur(20px); /* 블러효과 그대로 유지 */
+            background: rgba(255, 255, 255, 0.7); /* 반투명 흰색 */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            box-sizing: border-box;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px;
+            font-family: 'YClover', sans-serif;
+            font-size: 0.9em;
+            color: #A00040;
+            opacity: 0.6;
+            background: #fdf5f6;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-contents">
+            <a href="#" class="logo">MyFirst연애</a>
+            <ul class="menu">
+                <li class="menu-item"><a href="#section1">1.이유</a></li>
+                <li class="menu-item"><a href="#section2">2.이상형</a></li>
+                <li class="menu-item"><a href="#section3">3.인연</a></li>
+                <li class="menu-item"><a href="#section4">4.고백</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <svg class="hidden">
+        <clipPath id="heart-clip" clipPathUnits="objectBoundingBox">
+            <path d="M0.5,0.95 C0.5,0.95 0,0.55 0,0.25 C0,0.05 0.25,0 0.5,0.2 C0.75,0 1,0.05 1,0.25 C1,0.55 0.5,0.9 0.5,0.9 Z" />
+        </clipPath>
+    </svg>
+
+    <section class="header-section">
+        <div class="heart-box">
+            <div class="title-text">My First 연애</div>
+            <div class="sub-text">그녀의 모쏠 탈출기</div>
+            <p style="text-align: center; font-family: YClover;">나의 첫 연애썰</p>
+        </div>
+    </section>
+
+    <section class="section-1" id="section1">
+        <div class="note">
+            <h2>1. 내가 모쏠이었던 이유</h2>
+            <p>나는 20살까지 모쏠이었다. 이유를 꼽아보자면 일단 내 이상형이 남들에 비해 좀 특이한 편이기도 했고, 여고를 나와서 주변에 남자인 친구가 아예 없었기 때문이다.(약간의 남자 공포증이 있었다)</p>
+            <p>그렇게 대학교에 입학하고, 사진동아리에 들어갔다. 대학 생활의 낭만을 꿈꾸며 신청한 첫 정기 출사. 약속 장소는 덕수궁이었다.</p>
+            <p>총 5명이 모이기로 했는데, 한 명이 늦었다. 다들 어색하게 서서 기다리던 그때, 저 멀리서 한 남자가 뛰어왔다.</p>
+            <img src="d.jpeg" alt="덕수궁 풍경" style="transform: rotate(-2deg); max-width: 200px;"> <p>그는 너무 미안하다며 편의점으로 달려가 음료수를 사 왔다. 나에게 <span class="highlight">"무슨 음료를 먹고 싶으세요?"</span>라고 물었고, 나는 "이프로요"라고 답했다. <img src="2.jpg" alt="첫 만남의 음료수" style="transform: rotate(3deg); display:inline-block; margin: 0 5px; vertical-align: middle; max-width: 40px; border:none; box-shadow:none;"> 그는 모두에게 음료수를 사주었고, 그 배려심에 속으로 이미 <b>+10점</b>을 주었다.</p>
+        </div>
+    </section>
+
+    <section class="section-2" id="section2">
+        <div class="note gray-border">
+            <h2>2. 이상형을 감지하다.</h2>
+            <p>출사를 하며 사진을 찍다 보니 내 핸드폰 배터리가 바닥을 보였다. 그때 그가 <span class="highlight">"제 보조 배터리 쓰실래요?"</span>라며 친절을 베풀었다. 감사했지만... 아쉽게도 배터리는 작동하지 않았다.</p>
+            <p>밥을 먹으며 대화를 나누는데, 그가 내 '이상형 리스트'에 완벽히 들어맞는다는 것을 알게 되었다. </p>
+            <div class="ideal-list-title">내 이상형 리스트:</div>
+            <p style="border: 2px solid #ffb6c1; padding: 15px; background: #fffed2;"><br> 1. 말을 예쁘게 하는 사람<br> 2. 내가 모르는 분야의 지식이 많고 똑똑함<br> 3. 적당한 아랍상<br> 4. 웃을 때 치아가 고른가<br> 5. 글씨 잘 쓰는 사람</p>...
+            <p>그렇게 출사가 끝나고 연락을 하려고 고민을 엄청했다. 하지만 결국 마음을 전하지 못했고, 인연이 끝나는 듯했다..</p>
+            <img src="go.jpg" alt="엇갈린 인연" style="max-width: 200px; transform: rotate(-1deg);"> </div>
+    </section>
+
+    <section class="section-3" id="section3">
+        <div class="note wavy-border">
+            <h2>3. 8개월뒤의 인연</h2>
+            <p>8개월 뒤,11월에 학생회였던 나는 학생회 회식을 하게되었다. 그러다 이제 활동안하는 선배님를 알게되었는데, 사진동아리를 한다고 하였다.그렇게 언니에게 그사람을 아냐고 물었고, 선배의 절친의 절친이라고 했다. 선배는 바로 나의 감정을 캐치하고, <b>"소개시켜줄까?"</b>라고 했다. 당황한 나는 얼버무렸고, 8개월이나 꽤 지났기때문에 그사람은 잊은것 같기도하고, 내가 소개시켜달라고하면 내가 먼저 좋아하는티가 나는데, 그러기 싫어서 고민이 되었다. 결국엔 언니가 그 사람에게 내가 먼저 말한것을 전하지 않은채 따로 주선하여 소개팅을 하게 되었다.</p>
+
+            <p>알고 보니 나한테는 아무말도 안한다고하고, 그 언니가 남자친구에게 <b>"얘(나)가 널 8개월 동안 구구절절 짝사랑했다"</b>고 거짓말을 했다. 그래서 그는 어떤사람이 나를 이렇게 좋아할까? 라고 생각하여 한번도 소개팅을 나오지 않고, 연애 생각이 없었는데, 소개팅을 수락했다고 한다.</p>
+             <img src="13.jpeg" alt="엇갈린 인연" style="max-width: 200px; transform: rotate(-1deg);"> 
+            <h2 style="margin-top: 40px;">4. 소개팅 당일 & 이후</h2>
+            <p>연락을 주고 받고 소개팅 당일이 왔다. 그가 식당을 예약하고 밥을 사고 여러 이야기를 나누었다. 하지만 좋은 사람인데 대화가 통하지 않는다고 판단해서 그의 애프터를 거절했다. 그렇게 아는 선배가 늘어나나 싶어 카톡 연락만 했다.</p>
+            <p>그런데 카톡을 주고받으며 말이 너무 잘 통했고 잠깐 얼굴을 봤는데 그가 잘생겨 보이기 시작했다. 사실 그는 엄청난 쿨톤인데 소개팅때는 누런 아이보리를 입고 나와 못생겨 보였다. 산책할 때 검정 옷을 입은 모습에 설레었다.</p>
+            <img src="kk.jpeg" alt="소개팅 사진" style="max-width: 400px; transform: rotate(5deg);"> </div>
+    </section>
+
+    <section class="section-4" id="section4">
+        <div class="note">
+            <h2>4. 12월 25일, 눈물과 고백</h2>
+            <p>그렇게 기말고사가 끝나고 크리스마스 이브에 만났다. 영화를 보고 술을 먹었는데 막차가 끊겼다..<img src="4.jpg" alt="엇갈린 인연" style="max-width: 100px; transform: rotate(-1deg);"> 그렇게 첫차를 타고 가자는 심정으로 계속 술을 마시며 이야기를 했다.. 그가 어릴 적 이야기를 해주었고 나는 흥미로워서 리액션을 해주는데, 갑자기 극 T인 그가 눈물을 흘렸다.(술기운인가..)</p>
+            <img src="dr.jpg" alt="그의 눈물" style="max-width: 200px; transform: rotate(-2deg);"> <p><span class="highlight">"태어나서 내 이야기를 이렇게 해본 게 처음이야. 나의 기억들을 꺼내줘서 고마워.."</span></p>
+            <p>나는 당연히 너무 당황하여 휴지를 주었다. 눈물을 그친 그는 <b>"우리 만나볼래?"</b>라고 고백했다. 시계를 보니 이미 12월 25일. 모쏠이었던 나에게 찾아온 가장 완벽한 크리스마스 선물이었다.</p>
+            <img src="ch.gif" alt="크리스마스 이브" style="max-width: 200px; transform: rotate(3deg);"> </div>
+    </section>
+
+    <footer>
+        <p>© 2026. 그녀의 모쏠탈출 성공기.</p>
+    </footer>
+
+</body>
+</html>
+        .section
